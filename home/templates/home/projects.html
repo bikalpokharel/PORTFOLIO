@@ -1,0 +1,217 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}Projects - {{ config.site_name }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="section" style="background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary)); padding: 100px 0 80px;">
+    <div class="container">
+        <div class="text-center" data-aos="fade-up">
+            <h1 class="display-4 fw-bold mb-4">My <span class="text-gradient">Projects</span></h1>
+            <p class="lead text-secondary mb-4">
+                A comprehensive showcase of my work in web development, machine learning, and AI projects
+            </p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="stats-row">
+                        <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                            <div class="stat-number">{{ projects.count|default:0 }}</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                        <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="stat-number">{{ project_types|length }}</div>
+                            <div class="stat-label">Categories</div>
+                        </div>
+                        <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Open Source</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Filters and Search -->
+<section class="py-5" style="background: var(--bg-secondary);">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mb-4 mb-lg-0">
+                <h5 class="mb-3 text-primary">Filter by Category</h5>
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="{% url 'projects' %}" class="filter-btn {% if not current_type %}active{% endif %}">
+                        <i class="fas fa-th"></i> All Projects
+                    </a>
+                    {% for type_value, type_name in project_types %}
+                    <a href="{% url 'projects' %}?type={{ type_value }}" 
+                       class="filter-btn {% if current_type == type_value %}active{% endif %}">
+                        {% if type_value == 'web' %}
+                            <i class="fas fa-globe"></i>
+                        {% elif type_value == 'ml' %}
+                            <i class="fas fa-brain"></i>
+                        {% elif type_value == 'mobile' %}
+                            <i class="fas fa-mobile-alt"></i>
+                        {% else %}
+                            <i class="fas fa-code"></i>
+                        {% endif %}
+                        {{ type_name }}
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <h5 class="mb-3 text-primary">Search Projects</h5>
+                <form method="GET" class="search-form">
+                    {% if current_type %}<input type="hidden" name="type" value="{{ current_type }}">{% endif %}
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control search-input" 
+                               placeholder="Search by name, technology..." value="{{ search_query|default:'' }}">
+                        <button type="submit" class="btn btn-primary search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Grid -->
+<section class="section" style="padding-top: 80px;">
+    <div class="container">
+        {% if projects %}
+        <div class="row g-4">
+            {% for project in projects %}
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 150 %}">
+                <div class="project-card-modern">
+                    <div class="project-image-container">
+                        {% if project.image %}
+                        <img src="{{ project.image.url }}" class="project-image" alt="{{ project.title }}">
+                        {% else %}
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        {% endif %}
+                        <div class="project-overlay">
+                            <div class="project-actions">
+                                {% if project.github_url %}
+                                <a href="{{ project.github_url }}" target="_blank" class="project-action-btn" title="View Code">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                {% endif %}
+                                {% if project.demo_url %}
+                                <a href="{{ project.demo_url }}" target="_blank" class="project-action-btn" title="Live Demo">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                {% endif %}
+                                <a href="{{ project.get_absolute_url }}" class="project-action-btn" title="View Details">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h5 class="project-title">{{ project.title }}</h5>
+                            <div class="project-status">
+                                <span class="status-badge status-{{ project.status|lower }}">
+                                    {{ project.get_status_display }}
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <p class="project-description">{{ project.description|truncatechars:120 }}</p>
+                        
+                        <div class="project-type-badge">
+                            <i class="fas fa-tag"></i>
+                            {{ project.get_project_type_display }}
+                        </div>
+                        
+                        <div class="project-technologies">
+                            {% for tech in project.technologies.all|slice:":4" %}
+                            <span class="tech-tag">{{ tech.name }}</span>
+                            {% endfor %}
+                            {% if project.technologies.count > 4 %}
+                            <span class="tech-tag tech-more">+{{ project.technologies.count|add:"-4" }}</span>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="project-footer">
+                            <div class="project-date">
+                                <i class="fas fa-calendar-alt"></i>
+                                {{ project.created_at|date:"M Y" }}
+                            </div>
+                            <a href="{{ project.get_absolute_url }}" class="project-link">
+                                Learn More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Pagination -->
+        {% if projects.has_other_pages %}
+        <div class="d-flex justify-content-center mt-5">
+            <nav aria-label="Projects pagination">
+                <ul class="pagination">
+                    {% if projects.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1{% if current_type %}&type={{ current_type }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">First</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ projects.previous_page_number }}{% if current_type %}&type={{ current_type }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">Previous</a>
+                    </li>
+                    {% endif %}
+                    
+                    {% for num in projects.paginator.page_range %}
+                        {% if projects.number == num %}
+                        <li class="page-item active">
+                            <span class="page-link">{{ num }}</span>
+                        </li>
+                        {% elif num > projects.number|add:'-3' and num < projects.number|add:'3' %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ num }}{% if current_type %}&type={{ current_type }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">{{ num }}</a>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    {% if projects.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ projects.next_page_number }}{% if current_type %}&type={{ current_type }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">Next</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ projects.paginator.num_pages }}{% if current_type %}&type={{ current_type }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}">Last</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        {% endif %}
+        
+        {% else %}
+        <!-- No Projects Found -->
+        <div class="text-center py-5">
+            <i class="fas fa-search fa-4x text-muted mb-3"></i>
+            <h3 class="text-muted">No Projects Found</h3>
+            <p class="text-secondary">
+                {% if search_query %}
+                    No projects found matching "{{ search_query }}".
+                {% elif current_type %}
+                    No projects found for {{ current_type|title }}.
+                {% else %}
+                    No projects available yet.
+                {% endif %}
+            </p>
+            {% if search_query or current_type %}
+            <a href="{% url 'projects' %}" class="btn btn-primary">View All Projects</a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

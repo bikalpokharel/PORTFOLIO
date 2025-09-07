@@ -1,0 +1,187 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}Contact - {{ config.site_name }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="section" style="background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary)); padding: 100px 0 60px;">
+    <div class="container">
+        <div class="text-center" data-aos="fade-up">
+            <h1 class="display-5 fw-bold mb-4">Get In <span class="text-gradient">Touch</span></h1>
+            <p class="lead text-secondary">
+                Let's discuss your project ideas, collaboration opportunities, or just have a chat about technology!
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="section" style="padding-bottom: 120px;">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Form -->
+            <div class="col-lg-8 mb-5" data-aos="fade-right">
+                <div class="card-custom p-4">
+                    <h3 class="mb-4">Send me a message</h3>
+                    <form method="POST" id="contactForm">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Name *</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject *</label>
+                            <input type="text" class="form-control" id="subject" name="subject" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary-custom">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="col-lg-4" data-aos="fade-left">
+                <div class="card-custom p-4 mb-4">
+                    <h4 class="mb-4">Contact Information</h4>
+                    <div class="mb-3">
+                        <i class="fas fa-envelope text-primary me-3"></i>
+                        <a href="mailto:pokharelbikalsharma@gmail.com" class="text-decoration-none">pokharelbikalsharma@gmail.com</a>
+                    </div>
+                    <div class="mb-3">
+                        <i class="fas fa-envelope text-primary me-3"></i>
+                        <a href="mailto:bikalhi@gmail.com" class="text-decoration-none">bikalhi@gmail.com</a>
+                    </div>
+                    <div class="mb-3">
+                        <i class="fas fa-phone text-primary me-3"></i>
+                        <a href="tel:+9779864546508" class="text-decoration-none">+977 9864546508</a>
+                    </div>
+                    <div class="mb-4">
+                        <i class="fas fa-map-marker-alt text-primary me-3"></i>
+                        Kathmandu, Nepal
+                    </div>
+                    
+                    <h5 class="mb-3">Follow Me</h5>
+                    <div class="social-links">
+                        <a href="https://github.com/bikalpokharel" target="_blank" class="me-3">
+                            <i class="fab fa-github fa-2x text-primary"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/bikal-pokharel-1b69442a1/" target="_blank" class="me-3">
+                            <i class="fab fa-linkedin fa-2x text-primary"></i>
+                        </a>
+                        <a href="https://wa.me/9779864546508" target="_blank" class="me-3">
+                            <i class="fab fa-whatsapp fa-2x text-success"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Response Time -->
+                <div class="card-custom p-4">
+                    <h5 class="text-primary mb-3">Response Time</h5>
+                    <p class="mb-2">
+                        <i class="fas fa-clock text-success me-2"></i>
+                        <strong>Usually within 24 hours</strong>
+                    </p>
+                    <p class="text-secondary small">
+                        I check my email regularly and try to respond as quickly as possible.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="section" style="background: var(--bg-secondary); padding-top: 120px;">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="100">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                What services do you offer?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                I specialize in full-stack web development using Django and React, machine learning model development and deployment, AI project consulting, and digital marketing solutions. I'm also available for freelance projects and technical consulting.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="200">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                Are you available for freelance work?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes! I'm always interested in exciting freelance opportunities, especially projects involving web development, machine learning, or innovative startup ideas. Feel free to reach out to discuss your project requirements.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="300">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                What's your experience level?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                I have {{ config.years_experience }}+ years of experience in software development. I'm proficient in Python, Django (Expert level), React (Intermediate), and various ML/AI technologies. I'm currently pursuing my BSc in Computer Science while working on real-world projects.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item mb-3" data-aos="fade-up" data-aos-delay="400">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                Do you work on international projects?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Absolutely! I work with clients globally and am comfortable with remote collaboration. I'm experienced with international time zones and use various communication tools to ensure smooth project delivery.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Form submission handling
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.disabled = true;
+        
+        // Re-enable button after 3 seconds (in case of success redirect)
+        setTimeout(() => {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }, 3000);
+    });
+</script>
+{% endblock %}

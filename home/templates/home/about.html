@@ -1,0 +1,292 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}About - {{ config.site_name }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="section" style="background: linear-gradient(135deg, var(--bg-secondary), var(--bg-primary)); padding: 100px 0 80px;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+                <h1 class="display-4 fw-bold mb-4">About <span class="text-gradient">Me</span></h1>
+                <p class="lead text-secondary mb-4">
+                    Passionate about leveraging technology to solve real-world problems and create meaningful impact through innovation.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Technologies</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="profile-image-container">
+                    {% if config.profile_image %}
+                    <img src="{{ config.profile_image.url }}" alt="{{ config.site_name }}" 
+                         class="profile-image">
+                    {% else %}
+                    <div class="profile-placeholder">
+                        <i class="fas fa-user fa-4x"></i>
+                    </div>
+                    {% endif %}
+                    <div class="profile-badge">
+                        <i class="fas fa-code"></i>
+                        Developer
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bio Section -->
+<section class="section" style="padding-top: 80px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto" data-aos="fade-up">
+                <div class="bio-card">
+                    <div class="bio-header">
+                        <h2 class="section-title">My Journey</h2>
+                        <div class="bio-subtitle">From curiosity to creation</div>
+                    </div>
+                    <div class="bio-content">
+                        <p class="lead text-secondary mb-4">
+                            {{ config.bio|default:"Hi, I'm Bikal Sharma Pokharel - an aspiring Data Scientist, AI/ML enthusiast, and Backend Developer. Currently pursuing my BSc in Computer Science, I'm passionate about creating innovative solutions that bridge the gap between technology and real-world problems." }}
+                        </p>
+                        <p class="text-secondary">
+                            My expertise spans across machine learning, web development, and digital marketing, allowing me to approach challenges from multiple perspectives. I believe in the power of continuous learning and the importance of building solutions that make a real difference in people's lives.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Technical Skills</h2>
+        
+        {% for category_name, skills_list in skill_categories.items %}
+            {% if skills_list %}
+            <div class="mb-5" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 100 %}">
+                <h3 class="text-primary mb-4">{{ category_name }}</h3>
+                <div class="row">
+                    {% for skill in skills_list %}
+                    <div class="col-lg-6 mb-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="fw-medium">
+                                {% if skill.icon %}
+                                <i class="{{ skill.icon }} me-2"></i>
+                                {% endif %}
+                                {{ skill.name }}
+                            </span>
+                            <span class="badge bg-primary">{{ skill.get_proficiency_display }}</span>
+                        </div>
+                        <div class="progress-custom">
+                            <div class="progress-bar-custom" data-percentage="{{ skill.level }}"></div>
+                        </div>
+                        <small class="text-muted">{{ skill.level }}% proficiency</small>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Experience Section -->
+{% if experiences %}
+<section class="section">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Experience & Education</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                {% for experience in experiences %}
+                <div class="mb-4" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 100 %}">
+                    <div class="card-custom p-4">
+                        <div class="row">
+                            <div class="col-md-3 text-md-end mb-3 mb-md-0">
+                                <span class="badge bg-primary mb-2">{{ experience.get_experience_type_display }}</span>
+                                <div class="text-muted small">
+                                    {{ experience.start_date|date:"M Y" }} - 
+                                    {% if experience.is_current %}Present{% else %}{{ experience.end_date|date:"M Y" }}{% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <h4 class="mb-1">{{ experience.title }}</h4>
+                                <h6 class="text-primary mb-2">{{ experience.company }}</h6>
+                                {% if experience.location %}
+                                <p class="text-muted small mb-2">
+                                    <i class="fas fa-map-marker-alt me-1"></i> {{ experience.location }}
+                                </p>
+                                {% endif %}
+                                <p class="text-secondary">{{ experience.description }}</p>
+                                
+                                {% if experience.skills_gained.all %}
+                                <div class="mt-3">
+                                    <strong class="small">Skills Gained:</strong>
+                                    {% for skill in experience.skills_gained.all %}
+                                    <span class="badge bg-light text-dark me-1">{{ skill.name }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Values & Philosophy -->
+<section class="section">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">My Values & Philosophy</h2>
+            <p class="lead text-secondary">The principles that guide my work and life</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4>Innovation</h4>
+                    <p>Always exploring new technologies and approaches to solve problems in creative ways.</p>
+                </div>
+            </div>
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Collaboration</h4>
+                    <p>Believing that the best solutions come from working together and sharing knowledge.</p>
+                </div>
+            </div>
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4>Continuous Learning</h4>
+                    <p>Committed to lifelong learning and staying updated with the latest technologies.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Interests & Goals -->
+<section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-5" data-aos="fade-right">
+                <div class="collaboration-card">
+                    <h3 class="text-primary mb-4">🤝 Looking to Collaborate On</h3>
+                    <div class="collaboration-list">
+                        <div class="collaboration-item">
+                            <i class="fas fa-rocket"></i>
+                            <div>
+                                <h6>Startup Ideas</h6>
+                                <p>Innovative problem-solving projects that make a real impact</p>
+                            </div>
+                        </div>
+                        <div class="collaboration-item">
+                            <i class="fas fa-globe"></i>
+                            <div>
+                                <h6>Web Applications</h6>
+                                <p>Integrating ML models with modern web technologies</p>
+                            </div>
+                        </div>
+                        <div class="collaboration-item">
+                            <i class="fas fa-brain"></i>
+                            <div>
+                                <h6>AI/ML Research</h6>
+                                <p>Experimental projects pushing the boundaries of AI</p>
+                            </div>
+                        </div>
+                        <div class="collaboration-item">
+                            <i class="fas fa-code"></i>
+                            <div>
+                                <h6>Open Source</h6>
+                                <p>Contributing to and building open-source solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-5" data-aos="fade-left">
+                <div class="expertise-card">
+                    <h3 class="text-primary mb-4">💡 Ask Me About</h3>
+                    <div class="expertise-grid">
+                        <div class="expertise-item">
+                            <i class="fas fa-robot"></i>
+                            <h6>AI/ML</h6>
+                            <p>Machine Learning & AI</p>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fab fa-python"></i>
+                            <h6>Python</h6>
+                            <p>Backend Development</p>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-code"></i>
+                            <h6>Web Dev</h6>
+                            <p>Full-Stack Solutions</p>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-bullhorn"></i>
+                            <h6>Digital Marketing</h6>
+                            <p>Tech + Creativity</p>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-database"></i>
+                            <h6>Data Science</h6>
+                            <p>Analytics & Insights</p>
+                        </div>
+                        <div class="expertise-item">
+                            <i class="fas fa-cloud"></i>
+                            <h6>Cloud Computing</h6>
+                            <p>Scalable Solutions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact CTA -->
+<section class="section bg-gradient text-white">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-8 mx-auto" data-aos="fade-up">
+                <h2 class="mb-4">🙋 Looking for Help & Mentorship</h2>
+                <p class="lead mb-4">
+                    I'm always eager to learn and grow. Open to guidance and mentorship in any field, 
+                    especially in ML pipelines, deployment, scalability, career development, and entrepreneurship.
+                </p>
+                <a href="{% url 'contact' %}" class="btn btn-light btn-lg">
+                    <i class="fas fa-envelope"></i> Let's Connect
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

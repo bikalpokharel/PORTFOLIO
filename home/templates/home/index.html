@@ -1,0 +1,400 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Hero Section -->
+<section id="hero" class="section" style="padding: 120px 0; background: radial-gradient(1000px 600px at 10% 10%, rgba(139, 92, 246, 0.15), transparent 60%), radial-gradient(800px 500px at 90% 10%, rgba(99, 102, 241, 0.15), transparent 60%), radial-gradient(600px 400px at 50% 50%, rgba(6, 182, 212, 0.1), transparent 70%), linear-gradient(135deg, var(--bg-secondary), var(--bg-primary)); position: relative; overflow: hidden;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7" data-aos="fade-right">
+                <h1 class="hero-title display-4 fw-bold mb-4" style="animation: fadeUp 0.9s ease both;">
+                    Hi, I'm <span class="text-gradient">{{ config.site_name }}</span>
+                </h1>
+                <p class="lead mb-4 text-secondary">
+                    🚀 Aspiring Data Scientist | 🤖 AI/ML Enthusiast | 💻 Backend Developer<br>
+                    🎓 BSc Computer Science Student passionate about solving real-world problems through technology
+                </p>
+                
+                <!-- Stats -->
+                <div class="row mb-4">
+                    <div class="col-4 text-center">
+                        <h3 class="fw-bold text-primary" data-counter="{{ projects.count }}">0</h3>
+                        <small class="text-muted">Projects</small>
+                    </div>
+                    <div class="col-4 text-center">
+                        <h3 class="fw-bold text-primary" data-counter="{{ config.years_experience }}">0</h3>
+                        <small class="text-muted">Years Exp</small>
+                    </div>
+                    <div class="col-4 text-center">
+                        <h3 class="fw-bold text-primary" data-counter="{{ skills.count }}">0</h3>
+                        <small class="text-muted">Skills</small>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="{% url 'projects' %}" class="btn-primary-custom">
+                        <i class="fas fa-laptop-code"></i> View Projects
+                    </a>
+                    <a href="{% url 'contact' %}" class="btn-outline-custom">
+                        <i class="fas fa-envelope"></i> Get In Touch
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5 text-center" data-aos="fade-left" data-aos-delay="200">
+                {% if config.profile_image %}
+                <img src="{{ config.profile_image.url }}" alt="{{ config.site_name }}" 
+                     class="img-fluid rounded-circle" style="width: 350px; height: 350px; object-fit: cover; border: 5px solid rgba(255,255,255,0.1); box-shadow: var(--shadow-lg);">
+                {% else %}
+                <div class="d-inline-block p-5 rounded-circle bg-primary text-white" style="width: 350px; height: 350px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-user fa-8x"></i>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Currently Working On -->
+<section id="current-work" class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">🔭 Currently Working On</h2>
+        <div class="row">
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-custom h-100 p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-globe text-primary me-3" style="font-size: 2rem;"></i>
+                        <h4 class="mb-0">Portfolio Website</h4>
+                    </div>
+                    <p class="text-secondary">Showcasing my skills, projects, and achievements with modern web technologies</p>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-custom h-100 p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-school text-primary me-3" style="font-size: 2rem;"></i>
+                        <h4 class="mb-0">School Website (PHP)</h4>
+                    </div>
+                    <p class="text-secondary">A complete school management platform with PHP and MySQL</p>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-custom h-100 p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-robot text-primary me-3" style="font-size: 2rem;"></i>
+                        <h4 class="mb-0">Travel Assistant AI</h4>
+                    </div>
+                    <p class="text-secondary">AI-powered travel companion for hotel bookings and local recommendations</p>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-custom h-100 p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-chart-line text-primary me-3" style="font-size: 2rem;"></i>
+                        <h4 class="mb-0">ML Pipeline</h4>
+                    </div>
+                    <p class="text-secondary">End-to-end machine learning workflows in Jupyter Notebook</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Skills -->
+<section id="skills" class="section">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">💡 Core Skills</h2>
+            <p class="lead text-secondary">Technologies I work with and love</p>
+        </div>
+        
+        <div class="row g-4">
+            {% for category, skills_list in skill_categories.items %}
+                {% if skills_list %}
+                <div class="col-lg-6 mb-5">
+                    <div class="skill-category-card" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 200 %}">
+                        <div class="skill-category-header">
+                            <h4 class="skill-category-title">{{ category|title }}</h4>
+                            <div class="skill-category-icon">
+                                {% if category == 'programming' %}
+                                    <i class="fas fa-code"></i>
+                                {% elif category == 'web development' %}
+                                    <i class="fas fa-globe"></i>
+                                {% elif category == 'data science' %}
+                                    <i class="fas fa-chart-line"></i>
+                                {% elif category == 'tools' %}
+                                    <i class="fas fa-tools"></i>
+                                {% else %}
+                                    <i class="fas fa-star"></i>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="skills-grid">
+                            {% for skill in skills_list %}
+                            <div class="skill-item-modern" data-aos="zoom-in" data-aos-delay="{% widthratio forloop.counter0 1 100 %}">
+                                <div class="skill-icon">
+                                    {% if 'python' in skill.name|lower %}
+                                        <i class="fab fa-python"></i>
+                                    {% elif 'javascript' in skill.name|lower %}
+                                        <i class="fab fa-js-square"></i>
+                                    {% elif 'react' in skill.name|lower %}
+                                        <i class="fab fa-react"></i>
+                                    {% elif 'django' in skill.name|lower %}
+                                        <i class="fas fa-server"></i>
+                                    {% elif 'git' in skill.name|lower %}
+                                        <i class="fab fa-git-alt"></i>
+                                    {% elif 'docker' in skill.name|lower %}
+                                        <i class="fab fa-docker"></i>
+                                    {% elif 'aws' in skill.name|lower %}
+                                        <i class="fab fa-aws"></i>
+                                    {% else %}
+                                        <i class="fas fa-code"></i>
+                                    {% endif %}
+                                </div>
+                                <div class="skill-content">
+                                    <h6 class="skill-name">{{ skill.name }}</h6>
+                                    <div class="skill-level">
+                                        <div class="skill-level-bar">
+                                            <div class="skill-level-fill" data-level="{{ skill.level }}"></div>
+                                        </div>
+                                        <span class="skill-percentage">{{ skill.level }}%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects -->
+<section id="featured-projects" class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">✨ Featured Projects</h2>
+            <p class="lead text-secondary">Showcasing my best work and latest creations</p>
+        </div>
+        
+        <div class="row g-4">
+            {% for project in projects %}
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 150 %}">
+                <div class="project-card-modern">
+                    <div class="project-image-container">
+                        {% if project.image %}
+                        <img src="{{ project.image.url }}" class="project-image" alt="{{ project.title }}">
+                        {% else %}
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        {% endif %}
+                        <div class="project-overlay">
+                            <div class="project-actions">
+                                {% if project.github_url %}
+                                <a href="{{ project.github_url }}" target="_blank" class="project-action-btn" title="View Code">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                {% endif %}
+                                {% if project.demo_url %}
+                                <a href="{{ project.demo_url }}" target="_blank" class="project-action-btn" title="Live Demo">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                {% endif %}
+                                <a href="{% url 'project_detail' project.slug %}" class="project-action-btn" title="View Details">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h5 class="project-title">{{ project.title }}</h5>
+                            <div class="project-status">
+                                <span class="status-badge status-{{ project.status|lower }}">
+                                    {{ project.get_status_display }}
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <p class="project-description">{{ project.description|truncatechars:120 }}</p>
+                        
+                        <div class="project-technologies">
+                            {% for tech in project.technologies.all|slice:":4" %}
+                            <span class="tech-tag">{{ tech.name }}</span>
+                            {% endfor %}
+                            {% if project.technologies.count > 4 %}
+                            <span class="tech-tag tech-more">+{{ project.technologies.count|add:"-4" }}</span>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="project-footer">
+                            <div class="project-date">
+                                <i class="fas fa-calendar-alt"></i>
+                                {{ project.created_at|date:"M Y" }}
+                            </div>
+                            <a href="{% url 'project_detail' project.slug %}" class="project-link">
+                                Learn More <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <div class="empty-projects">
+                    <i class="fas fa-folder-open fa-3x text-muted mb-3"></i>
+                    <h5 class="text-muted">No projects available yet</h5>
+                    <p class="text-muted">Check back soon for exciting new projects!</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        {% if projects.count > 0 %}
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="{% url 'projects' %}" class="btn-primary-custom btn-lg">
+                <i class="fas fa-arrow-right"></i> View All Projects
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Learning Section -->
+<section id="learning" class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">📚 Currently Learning</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <div class="learning-items">
+                    <div class="row">
+                        <div class="col-md-6 mb-3" data-aos="fade-up" data-aos-delay="300">
+                            <div class="p-3 rounded bg-light">
+                                <i class="fas fa-cloud text-primary mb-2" style="font-size: 2rem;"></i>
+                                <h5>Cloud Computing & Docker</h5>
+                                <small class="text-muted">Advanced cloud, Intermediate Docker</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3" data-aos="fade-up" data-aos-delay="400">
+                            <div class="p-3 rounded bg-light">
+                                <i class="fas fa-palette text-primary mb-2" style="font-size: 2rem;"></i>
+                                <h5>Digital Marketing & Design</h5>
+                                <small class="text-muted">Canva, marketing tools</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+{% if testimonials %}
+<section id="testimonials" class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+        <h2 class="section-title" data-aos="fade-up">💬 What People Say</h2>
+        <div class="row">
+            {% for testimonial in testimonials %}
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 100 %}">
+                <div class="card-custom p-4 h-100">
+                    <div class="text-warning mb-3">
+                        {% for _ in "12345"|make_list %}
+                            {% if forloop.counter <= testimonial.rating %}
+                                <i class="fas fa-star"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <blockquote class="mb-3">
+                        <p class="fst-italic">"{{ testimonial.content }}"</p>
+                    </blockquote>
+                    <div class="d-flex align-items-center">
+                        {% if testimonial.image %}
+                        <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}" 
+                             class="rounded-circle me-3" style="width: 50px; height: 50px; object-fit: cover;">
+                        {% else %}
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" 
+                             style="width: 50px; height: 50px;">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        {% endif %}
+                        <div>
+                            <h6 class="mb-0">{{ testimonial.name }}</h6>
+                            <small class="text-muted">{{ testimonial.position }}{% if testimonial.company %}, {{ testimonial.company }}{% endif %}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Recent Blog Posts -->
+{# Blog section removed per request #}
+
+<!-- CTA Section -->
+<section id="cta" class="section bg-gradient text-white">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-8 mx-auto" data-aos="fade-up">
+                <h2 class="mb-4">🤝 Let's Collaborate!</h2>
+                <p class="lead mb-4">
+                    I'm always interested in startup ideas, innovative projects, and open-source contributions. 
+                    Let's build something amazing together!
+                </p>
+                <div class="d-flex gap-3 justify-content-center flex-wrap">
+                    <a href="{% url 'contact' %}" class="btn btn-light btn-lg">
+                        <i class="fas fa-envelope"></i> Get In Touch
+                    </a>
+                    <a href="https://github.com/bikalpokharel" target="_blank" class="btn btn-outline-light btn-lg">
+                        <i class="fab fa-github"></i> View GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Counter animation on scroll
+    function animateCounters() {
+        const counters = document.querySelectorAll('[data-counter]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-counter'));
+                    const duration = 2000;
+                    let start = 0;
+                    const increment = target / (duration / 16);
+                    
+                    const timer = setInterval(() => {
+                        start += increment;
+                        counter.textContent = Math.floor(start);
+                        
+                        if (start >= target) {
+                            counter.textContent = target;
+                            clearInterval(timer);
+                        }
+                    }, 16);
+                    
+                    observer.unobserve(counter);
+                }
+            });
+        });
+        
+        counters.forEach(counter => observer.observe(counter));
+    }
+    
+    // Initialize counter animation
+    animateCounters();
+</script>
+{% endblock %}
