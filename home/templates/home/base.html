@@ -36,7 +36,7 @@
     
     <!-- Custom CSS -->
     <style>
-        /* CSS Variables - Dark Purple Theme (Default) */
+        /* CSS Variables - Dark Purple Theme */
         :root {
             --primary-color: #8b5cf6;
             --primary-dark: #7c3aed;
@@ -65,254 +65,6 @@
             --font-primary: 'Poppins', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
-
-        /* Light Theme Variables */
-        .theme-light {
-            --text-primary: #111827;
-            --text-secondary: #374151;
-            --text-muted: #6b7280;
-            --bg-primary: #fefefe;
-            --bg-secondary: #f8fafc;
-            --bg-accent: #f1f5f9;
-            --bg-card: #ffffff;
-            --border-color: #d1d5db;
-            --border-glow: rgba(139, 92, 246, 0.3);
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.06);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
-            --shadow-glow: 0 0 20px rgba(139, 92, 246, 0.15);
-        }
-
-        /* Light theme specific styles */
-        .theme-light .card-custom {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow);
-        }
-
-        .theme-light .card-custom:hover {
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-color);
-        }
-
-        .theme-light .skill-category-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-        }
-
-        .theme-light .skill-category-card:hover {
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-color);
-        }
-
-        .theme-light .project-card-modern {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-        }
-
-        .theme-light .project-card-modern:hover {
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-color);
-        }
-
-        .theme-light .footer {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-color);
-        }
-
-        .theme-light .btn-outline-custom {
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            background: transparent;
-        }
-
-        .theme-light .btn-outline-custom:hover {
-            background: var(--primary-color);
-            color: white;
-            box-shadow: var(--shadow);
-        }
-
-        /* Light theme button improvements */
-        .theme-light .btn-primary-custom {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            border: 1px solid var(--primary-color);
-            color: white;
-            box-shadow: var(--shadow);
-        }
-
-        .theme-light .btn-primary-custom:hover {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-2px);
-        }
-
-        /* Light theme form elements */
-        .theme-light .form-control {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-        }
-
-        .theme-light .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.2rem rgba(139, 92, 246, 0.25);
-        }
-
-        /* Light theme skill items */
-        .theme-light .skill-item-modern {
-            background: var(--bg-accent);
-            border: 1px solid var(--border-color);
-        }
-
-        .theme-light .skill-item-modern:hover {
-            background: var(--bg-card);
-            border-color: var(--primary-color);
-        }
-
-        /* Light theme project image placeholder */
-        .theme-light .project-image-placeholder {
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-        }
-
-        /* Light theme profile placeholder */
-        .theme-light .profile-placeholder {
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-        }
-
-        /* Light theme social links */
-        .theme-light .social-links a {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            color: var(--text-secondary);
-        }
-
-        .theme-light .social-links a:hover {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        /* Light theme navigation improvements */
-        .theme-light .navbar-nav .nav-link {
-            color: var(--text-primary) !important;
-        }
-
-        .theme-light .navbar-nav .nav-link:hover,
-        .theme-light .navbar-nav .nav-link.active {
-            color: var(--primary-color) !important;
-            background: rgba(139, 92, 246, 0.1);
-        }
-
-        /* Light theme section backgrounds */
-        .theme-light .section {
-            background: var(--bg-primary);
-        }
-
-        .theme-light .section:nth-child(even) {
-            background: var(--bg-secondary);
-        }
-
-        /* Light theme tech tags */
-        .theme-light .tech-tag {
-            background: var(--bg-accent);
-            color: var(--text-secondary);
-            border: 1px solid var(--border-color);
-        }
-
-        .theme-light .tech-tag.tech-more {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        /* Light theme status badges */
-        .theme-light .status-badge {
-            font-weight: 600;
-        }
-
-        .theme-light .status-completed {
-            background: rgba(34, 197, 94, 0.15);
-            color: #059669;
-        }
-
-        .theme-light .status-in-progress {
-            background: rgba(251, 191, 36, 0.15);
-            color: #d97706;
-        }
-
-        .theme-light .status-planned {
-            background: rgba(59, 130, 246, 0.15);
-            color: #2563eb;
-        }
-
-        /* Light theme progress bars */
-        .theme-light .progress-custom {
-            background: var(--bg-accent);
-        }
-
-        .theme-light .skill-level-bar {
-            background: var(--bg-accent);
-        }
-
-        /* Light theme value cards */
-        .theme-light .value-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-        }
-
-        .theme-light .value-card:hover {
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-color);
-        }
-
-        /* Light theme collaboration items */
-        .theme-light .collaboration-item {
-            background: var(--bg-accent);
-            border: 1px solid var(--border-color);
-        }
-
-        .theme-light .collaboration-item:hover {
-            background: var(--bg-card);
-            border-color: var(--primary-color);
-        }
-
-        /* Light theme expertise items */
-        .theme-light .expertise-item {
-            background: var(--bg-accent);
-            border: 1px solid var(--border-color);
-        }
-
-        .theme-light .expertise-item:hover {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        /* Light theme pagination */
-        .theme-light .pagination .page-link {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-        }
-
-        .theme-light .pagination .page-link:hover {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        /* Light theme search form */
-        .theme-light .search-input {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
-        }
-
-        .theme-light .search-input:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.2rem rgba(139, 92, 246, 0.25);
-        }
-
-        /* Remove old dark theme overrides - using default dark */
 
         /* Global Styles */
         * {
@@ -345,13 +97,6 @@
             animation: backgroundShift 20s ease-in-out infinite;
         }
 
-        /* Light theme background */
-        .theme-light body::before {
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
-        }
 
         @keyframes backgroundShift {
             0%, 100% { transform: translateX(0) translateY(0); }
@@ -407,10 +152,6 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        .theme-light .navbar {
-            background: rgba(255, 255, 255, 0.95) !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
 
         .navbar-brand {
             font-weight: 700;
@@ -1450,11 +1191,6 @@
                         </a>
                     </li>
                     {% endif %}
-                    <li class="nav-item d-none d-lg-flex align-items-center ms-2">
-                        <button id="themeToggle" class="btn btn-sm btn-outline-secondary" type="button" aria-label="Toggle dark mode">
-                            <i class="fas fa-moon"></i>
-                        </button>
-                    </li>
                     <li class="nav-item d-lg-none mt-2">
                         <a class="btn btn-outline-success w-100" href="https://wa.me/9779864546508" target="_blank">
                             <i class="fab fa-whatsapp"></i> WhatsApp
@@ -1572,40 +1308,6 @@
             });
         });
 
-        // Theme toggle with persistence
-        const root = document.documentElement;
-        const themeToggleBtn = document.getElementById('themeToggle');
-        const THEME_KEY = 'preferred-theme';
-
-        function applyTheme(theme) {
-            if (theme === 'light') {
-                root.classList.add('theme-light');
-                root.classList.remove('theme-dark');
-                themeToggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
-                themeToggleBtn.setAttribute('aria-label', 'Switch to dark mode');
-            } else {
-                root.classList.remove('theme-light');
-                root.classList.add('theme-dark');
-                themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
-                themeToggleBtn.setAttribute('aria-label', 'Switch to light mode');
-            }
-        }
-
-        // Initialize theme
-        const savedTheme = localStorage.getItem(THEME_KEY);
-        if (savedTheme) {
-            applyTheme(savedTheme);
-        } else {
-            // Default to dark theme
-            applyTheme('dark');
-        }
-
-        themeToggleBtn?.addEventListener('click', function() {
-            const current = root.classList.contains('theme-light') ? 'light' : 'dark';
-            const next = current === 'dark' ? 'light' : 'dark';
-            localStorage.setItem(THEME_KEY, next);
-            applyTheme(next);
-        });
 
         // Back to top button
         const toTopBtn = document.createElement('button');
