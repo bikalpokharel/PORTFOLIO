@@ -68,18 +68,18 @@
 
         /* Light Theme Variables */
         .theme-light {
-            --text-primary: #1f2937;
-            --text-secondary: #4b5563;
+            --text-primary: #111827;
+            --text-secondary: #374151;
             --text-muted: #6b7280;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f9fafb;
-            --bg-accent: #f3f4f6;
+            --bg-primary: #fefefe;
+            --bg-secondary: #f8fafc;
+            --bg-accent: #f1f5f9;
             --bg-card: #ffffff;
-            --border-color: #e5e7eb;
-            --border-glow: rgba(139, 92, 246, 0.2);
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-            --shadow-glow: 0 0 20px rgba(139, 92, 246, 0.1);
+            --border-color: #d1d5db;
+            --border-glow: rgba(139, 92, 246, 0.3);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -1px rgb(0 0 0 / 0.06);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+            --shadow-glow: 0 0 20px rgba(139, 92, 246, 0.15);
         }
 
         /* Light theme specific styles */
@@ -89,14 +89,29 @@
             box-shadow: var(--shadow);
         }
 
+        .theme-light .card-custom:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
         .theme-light .skill-category-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
         }
 
+        .theme-light .skill-category-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
         .theme-light .project-card-modern {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
+        }
+
+        .theme-light .project-card-modern:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
         }
 
         .theme-light .footer {
@@ -113,6 +128,188 @@
         .theme-light .btn-outline-custom:hover {
             background: var(--primary-color);
             color: white;
+            box-shadow: var(--shadow);
+        }
+
+        /* Light theme button improvements */
+        .theme-light .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border: 1px solid var(--primary-color);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .theme-light .btn-primary-custom:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        /* Light theme form elements */
+        .theme-light .form-control {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .theme-light .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(139, 92, 246, 0.25);
+        }
+
+        /* Light theme skill items */
+        .theme-light .skill-item-modern {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+        }
+
+        .theme-light .skill-item-modern:hover {
+            background: var(--bg-card);
+            border-color: var(--primary-color);
+        }
+
+        /* Light theme project image placeholder */
+        .theme-light .project-image-placeholder {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        }
+
+        /* Light theme profile placeholder */
+        .theme-light .profile-placeholder {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        }
+
+        /* Light theme social links */
+        .theme-light .social-links a {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        .theme-light .social-links a:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Light theme navigation improvements */
+        .theme-light .navbar-nav .nav-link {
+            color: var(--text-primary) !important;
+        }
+
+        .theme-light .navbar-nav .nav-link:hover,
+        .theme-light .navbar-nav .nav-link.active {
+            color: var(--primary-color) !important;
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        /* Light theme section backgrounds */
+        .theme-light .section {
+            background: var(--bg-primary);
+        }
+
+        .theme-light .section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        /* Light theme tech tags */
+        .theme-light .tech-tag {
+            background: var(--bg-accent);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .theme-light .tech-tag.tech-more {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Light theme status badges */
+        .theme-light .status-badge {
+            font-weight: 600;
+        }
+
+        .theme-light .status-completed {
+            background: rgba(34, 197, 94, 0.15);
+            color: #059669;
+        }
+
+        .theme-light .status-in-progress {
+            background: rgba(251, 191, 36, 0.15);
+            color: #d97706;
+        }
+
+        .theme-light .status-planned {
+            background: rgba(59, 130, 246, 0.15);
+            color: #2563eb;
+        }
+
+        /* Light theme progress bars */
+        .theme-light .progress-custom {
+            background: var(--bg-accent);
+        }
+
+        .theme-light .skill-level-bar {
+            background: var(--bg-accent);
+        }
+
+        /* Light theme value cards */
+        .theme-light .value-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+        }
+
+        .theme-light .value-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        /* Light theme collaboration items */
+        .theme-light .collaboration-item {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+        }
+
+        .theme-light .collaboration-item:hover {
+            background: var(--bg-card);
+            border-color: var(--primary-color);
+        }
+
+        /* Light theme expertise items */
+        .theme-light .expertise-item {
+            background: var(--bg-accent);
+            border: 1px solid var(--border-color);
+        }
+
+        .theme-light .expertise-item:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Light theme pagination */
+        .theme-light .pagination .page-link {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .theme-light .pagination .page-link:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Light theme search form */
+        .theme-light .search-input {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .theme-light .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(139, 92, 246, 0.25);
         }
 
         /* Remove old dark theme overrides - using default dark */
@@ -151,9 +348,9 @@
         /* Light theme background */
         .theme-light body::before {
             background: 
-                radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.03) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
         }
 
         @keyframes backgroundShift {
