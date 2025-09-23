@@ -36,7 +36,7 @@
     
     <!-- Custom CSS -->
     <style>
-        /* CSS Variables - Dark Purple Theme */
+        /* CSS Variables - Dark Purple Theme (Default) */
         :root {
             --primary-color: #8b5cf6;
             --primary-dark: #7c3aed;
@@ -64,6 +64,55 @@
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             --font-primary: 'Poppins', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        /* Light Theme Variables */
+        .theme-light {
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --text-muted: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-accent: #f3f4f6;
+            --bg-card: #ffffff;
+            --border-color: #e5e7eb;
+            --border-glow: rgba(139, 92, 246, 0.2);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-glow: 0 0 20px rgba(139, 92, 246, 0.1);
+        }
+
+        /* Light theme specific styles */
+        .theme-light .card-custom {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+
+        .theme-light .skill-category-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+        }
+
+        .theme-light .project-card-modern {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+        }
+
+        .theme-light .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .theme-light .btn-outline-custom {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .theme-light .btn-outline-custom:hover {
+            background: var(--primary-color);
+            color: white;
         }
 
         /* Remove old dark theme overrides - using default dark */
@@ -97,6 +146,14 @@
                 radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
             z-index: -1;
             animation: backgroundShift 20s ease-in-out infinite;
+        }
+
+        /* Light theme background */
+        .theme-light body::before {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.03) 0%, transparent 50%);
         }
 
         @keyframes backgroundShift {
@@ -151,6 +208,11 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             transition: var(--transition);
             border-bottom: 1px solid var(--border-color);
+        }
+
+        .theme-light .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .navbar-brand {
@@ -1319,26 +1381,30 @@
         const THEME_KEY = 'preferred-theme';
 
         function applyTheme(theme) {
-            if (theme === 'dark') {
-                root.classList.add('theme-dark');
-                themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
-                themeToggleBtn.setAttribute('aria-label', 'Switch to light mode');
-            } else {
+            if (theme === 'light') {
+                root.classList.add('theme-light');
                 root.classList.remove('theme-dark');
                 themeToggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
                 themeToggleBtn.setAttribute('aria-label', 'Switch to dark mode');
+            } else {
+                root.classList.remove('theme-light');
+                root.classList.add('theme-dark');
+                themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+                themeToggleBtn.setAttribute('aria-label', 'Switch to light mode');
             }
         }
 
+        // Initialize theme
         const savedTheme = localStorage.getItem(THEME_KEY);
         if (savedTheme) {
             applyTheme(savedTheme);
-        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        } else {
+            // Default to dark theme
             applyTheme('dark');
         }
 
         themeToggleBtn?.addEventListener('click', function() {
-            const current = root.classList.contains('theme-dark') ? 'dark' : 'light';
+            const current = root.classList.contains('theme-light') ? 'light' : 'dark';
             const next = current === 'dark' ? 'light' : 'dark';
             localStorage.setItem(THEME_KEY, next);
             applyTheme(next);
