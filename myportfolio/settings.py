@@ -132,6 +132,9 @@ LOGGING = {
     },
 }
 
+# GitHub Webhook Settings
+GITHUB_WEBHOOK_SECRET = 'your-webhook-secret-here'  # Set this in production
+
 # Security settings for production
 if not DEBUG:
     SECURE_SSL_REDIRECT = True
