@@ -106,7 +106,11 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'pokharelbikalsharma@gmail.com'
-EMAIL_HOST_PASSWORD = 'your-app-password'  # Use app password for Gmail
+EMAIL_HOST_PASSWORD = 'your-app-password'  # Replace with your Gmail App Password
+EMAIL_TIMEOUT = 60
+EMAIL_USE_SSL = False
+DEFAULT_FROM_EMAIL = 'pokharelbikalsharma@gmail.com'
+SERVER_EMAIL = 'pokharelbikalsharma@gmail.com'
 
 # Logging
 LOGGING = {

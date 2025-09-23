@@ -77,14 +77,6 @@ class TestimonialAdmin(admin.ModelAdmin):
     list_editable = ['is_active', 'rating']
     search_fields = ['name', 'company', 'content']
 
-@admin.register(BlogPost)
-class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ['title', 'is_published', 'created_at', 'updated_at']
-    list_filter = ['is_published', 'created_at']
-    list_editable = ['is_published']
-    search_fields = ['title', 'content']
-    prepopulated_fields = {'slug': ('title',)}
-    readonly_fields = ['created_at', 'updated_at']
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):

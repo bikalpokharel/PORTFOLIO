@@ -127,25 +127,6 @@ class Testimonial(models.Model):
     def __str__(self):
         return f"Testimonial from {self.name}"
 
-class BlogPost(models.Model):
-    title = models.CharField(max_length=200)
-    slug = models.SlugField(unique=True)
-    content = models.TextField()
-    excerpt = models.TextField(max_length=300, blank=True)
-    featured_image = models.ImageField(upload_to='blog/', blank=True, null=True)
-    tags = models.CharField(max_length=200, blank=True, help_text="Comma separated tags")
-    is_published = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    
-    class Meta:
-        ordering = ['-created_at']
-    
-    def __str__(self):
-        return self.title
-    
-    def get_absolute_url(self):
-        return reverse('blog_detail', kwargs={'slug': self.slug})
 
 class Contact(models.Model):
     name = models.CharField(max_length=100)

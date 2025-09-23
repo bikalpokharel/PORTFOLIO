@@ -32,7 +32,6 @@ def home(request):
     featured_projects = Project.objects.filter(is_featured=True)[:6]
     skills = Skill.objects.filter(is_featured=True)
     testimonials = Testimonial.objects.filter(is_active=True)[:3]
-    recent_blog_posts = BlogPost.objects.filter(is_published=True)[:3]
     
     # Categorize skills
     skill_categories = {
@@ -48,7 +47,6 @@ def home(request):
         'skills': skills,
         'skill_categories': skill_categories,
         'testimonials': testimonials,
-        'blog_posts': recent_blog_posts,
         'page_title': 'Home'
     }
     return render(request, 'home/index.html', context)
@@ -130,48 +128,6 @@ def project_detail(request, slug):
     }
     return render(request, 'home/project_detail.html', context)
 
-def blog(request):
-    """Blog page view"""
-    config = get_site_config()
-    all_posts = BlogPost.objects.filter(is_published=True)
-    
-    # Search functionality
-    search_query = request.GET.get('search')
-    if search_query:
-        all_posts = all_posts.filter(
-            Q(title__icontains=search_query) |
-            Q(content__icontains=search_query) |
-            Q(tags__icontains=search_query)
-        )
-    
-    # Pagination
-    paginator = Paginator(all_posts, 6)
-    page_number = request.GET.get('page')
-    posts_page = paginator.get_page(page_number)
-    
-    context = {
-        'config': config,
-        'posts': posts_page,
-        'search_query': search_query,
-        'page_title': 'Blog'
-    }
-    return render(request, 'home/blog.html', context)
-
-def blog_detail(request, slug):
-    """Blog detail view"""
-    config = get_site_config()
-    post = get_object_or_404(BlogPost, slug=slug, is_published=True)
-    related_posts = BlogPost.objects.filter(
-        is_published=True
-    ).exclude(id=post.id)[:3]
-    
-    context = {
-        'config': config,
-        'post': post,
-        'related_posts': related_posts,
-        'page_title': post.title
-    }
-    return render(request, 'home/blog_detail.html', context)
 
 def contact(request):
     """Contact page view"""
