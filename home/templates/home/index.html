@@ -293,47 +293,6 @@
     </div>
 </section>
 
-<!-- Testimonials -->
-{% if testimonials %}
-<section id="testimonials" class="section" style="background: var(--bg-secondary);">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">💬 What People Say</h2>
-        <div class="row">
-            {% for testimonial in testimonials %}
-            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="{% widthratio forloop.counter0 1 100 %}">
-                <div class="card-custom p-4 h-100">
-                    <div class="text-warning mb-3">
-                        {% for _ in "12345"|make_list %}
-                            {% if forloop.counter <= testimonial.rating %}
-                                <i class="fas fa-star"></i>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-                    <blockquote class="mb-3">
-                        <p class="fst-italic">"{{ testimonial.content }}"</p>
-                    </blockquote>
-                    <div class="d-flex align-items-center">
-                        {% if testimonial.image %}
-                        <img src="{{ testimonial.image.url }}" alt="{{ testimonial.name }}" 
-                             class="rounded-circle me-3" style="width: 50px; height: 50px; object-fit: cover;">
-                        {% else %}
-                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center me-3" 
-                             style="width: 50px; height: 50px;">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        {% endif %}
-                        <div>
-                            <h6 class="mb-0">{{ testimonial.name }}</h6>
-                            <small class="text-muted">{{ testimonial.position }}{% if testimonial.company %}, {{ testimonial.company }}{% endif %}</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-{% endif %}
 
 <!-- Recent Blog Posts -->
 {# Blog section removed per request #}

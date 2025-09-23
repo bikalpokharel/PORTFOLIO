@@ -31,7 +31,6 @@ def home(request):
     config = get_site_config()
     featured_projects = Project.objects.filter(is_featured=True)[:6]
     skills = Skill.objects.filter(is_featured=True)
-    testimonials = Testimonial.objects.filter(is_active=True)[:3]
     
     # Categorize skills
     skill_categories = {
@@ -46,7 +45,6 @@ def home(request):
         'projects': featured_projects,
         'skills': skills,
         'skill_categories': skill_categories,
-        'testimonials': testimonials,
         'page_title': 'Home'
     }
     return render(request, 'home/index.html', context)
@@ -55,7 +53,6 @@ def about(request):
     """About page view"""
     config = get_site_config()
     all_skills = Skill.objects.all()
-    experiences = Experience.objects.all()
     
     # Categorize skills for about page
     skill_categories = {
@@ -70,7 +67,6 @@ def about(request):
     context = {
         'config': config,
         'skill_categories': skill_categories,
-        'experiences': experiences,
         'page_title': 'About Me'
     }
     return render(request, 'home/about.html', context)
