@@ -10,21 +10,23 @@ import logging
 logger = logging.getLogger(__name__)
 
 def get_site_config():
-    """Get or create site configuration"""
-    config, created = SiteConfiguration.objects.get_or_create(
-        pk=1,
-        defaults={
-            'site_name': 'Bikal Sharma Pokharel',
-            'tagline': 'Aspiring Data Scientist | AI/ML Enthusiast | Backend Developer',
-            'bio': '''BSc Computer Science Student passionate about solving real-world problems 
+    """Get or create site configuration singleton"""
+    # Grab the singleton if it exists
+    config = SiteConfiguration.objects.first()
+    if config:
+        return config
+
+    # Otherwise create the very first one
+    return SiteConfiguration.objects.create(
+        site_name='Bikal Sharma Pokharel',
+        tagline='Aspiring Data Scientist | AI/ML Enthusiast | Backend Developer',
+        bio='''BSc Computer Science Student passionate about solving real-world problems 
                      through technology. Experienced in full-stack development, machine learning, 
                      and digital marketing.''',
-            'email': 'pokharelbikalsharma@gmail.com',
-            'location': 'Nepal',
-            'years_experience': 2
-        }
+        email='pokharelbikalsharma@gmail.com',
+        location='Nepal',
+        years_experience=2
     )
-    return config
 
 def home(request):
     """Home page view"""
