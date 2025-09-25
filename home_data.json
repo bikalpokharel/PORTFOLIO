@@ -1,0 +1,665 @@
+[
+{
+  "model": "home.skill",
+  "pk": 1,
+  "fields": {
+    "name": "Python",
+    "category": "programming",
+    "proficiency": "expert",
+    "level": 95,
+    "icon": "fab fa-python",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 2,
+  "fields": {
+    "name": "JavaScript",
+    "category": "programming",
+    "proficiency": "advanced",
+    "level": 85,
+    "icon": "fab fa-js",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 3,
+  "fields": {
+    "name": "PHP",
+    "category": "programming",
+    "proficiency": "intermediate",
+    "level": 75,
+    "icon": "fab fa-php",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 4,
+  "fields": {
+    "name": "SQL",
+    "category": "programming",
+    "proficiency": "advanced",
+    "level": 80,
+    "icon": "fas fa-database",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 5,
+  "fields": {
+    "name": "Django",
+    "category": "frameworks",
+    "proficiency": "expert",
+    "level": 90,
+    "icon": "fab fa-python",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 6,
+  "fields": {
+    "name": "React",
+    "category": "frameworks",
+    "proficiency": "intermediate",
+    "level": 70,
+    "icon": "fab fa-react",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 7,
+  "fields": {
+    "name": "Flask",
+    "category": "frameworks",
+    "proficiency": "intermediate",
+    "level": 75,
+    "icon": "fab fa-python",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 8,
+  "fields": {
+    "name": "Bootstrap",
+    "category": "frameworks",
+    "proficiency": "advanced",
+    "level": 85,
+    "icon": "fab fa-bootstrap",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 9,
+  "fields": {
+    "name": "PostgreSQL",
+    "category": "databases",
+    "proficiency": "advanced",
+    "level": 80,
+    "icon": "fas fa-database",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 10,
+  "fields": {
+    "name": "MySQL",
+    "category": "databases",
+    "proficiency": "advanced",
+    "level": 78,
+    "icon": "fas fa-database",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 11,
+  "fields": {
+    "name": "SQLite",
+    "category": "databases",
+    "proficiency": "advanced",
+    "level": 85,
+    "icon": "fas fa-database",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 12,
+  "fields": {
+    "name": "MongoDB",
+    "category": "databases",
+    "proficiency": "intermediate",
+    "level": 65,
+    "icon": "fas fa-leaf",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 13,
+  "fields": {
+    "name": "Git",
+    "category": "tools",
+    "proficiency": "advanced",
+    "level": 85,
+    "icon": "fab fa-git-alt",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 14,
+  "fields": {
+    "name": "Docker",
+    "category": "tools",
+    "proficiency": "intermediate",
+    "level": 70,
+    "icon": "fab fa-docker",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 15,
+  "fields": {
+    "name": "Jupyter Notebook",
+    "category": "tools",
+    "proficiency": "advanced",
+    "level": 88,
+    "icon": "fas fa-book",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 16,
+  "fields": {
+    "name": "VS Code",
+    "category": "tools",
+    "proficiency": "expert",
+    "level": 95,
+    "icon": "fas fa-code",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 17,
+  "fields": {
+    "name": "AWS",
+    "category": "cloud",
+    "proficiency": "intermediate",
+    "level": 65,
+    "icon": "fab fa-aws",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 18,
+  "fields": {
+    "name": "Heroku",
+    "category": "cloud",
+    "proficiency": "intermediate",
+    "level": 70,
+    "icon": "fas fa-cloud",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 19,
+  "fields": {
+    "name": "DigitalOcean",
+    "category": "cloud",
+    "proficiency": "intermediate",
+    "level": 68,
+    "icon": "fab fa-digital-ocean",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 20,
+  "fields": {
+    "name": "Machine Learning",
+    "category": "other",
+    "proficiency": "advanced",
+    "level": 82,
+    "icon": "fas fa-brain",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 21,
+  "fields": {
+    "name": "Digital Marketing",
+    "category": "other",
+    "proficiency": "intermediate",
+    "level": 75,
+    "icon": "fas fa-bullhorn",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 22,
+  "fields": {
+    "name": "Canva",
+    "category": "other",
+    "proficiency": "intermediate",
+    "level": 70,
+    "icon": "fas fa-palette",
+    "is_featured": true,
+    "order": 0
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 23,
+  "fields": {
+    "name": "Java",
+    "category": "programming",
+    "proficiency": "intermediate",
+    "level": 70,
+    "icon": "fab fa-java",
+    "is_featured": true,
+    "order": 3
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 24,
+  "fields": {
+    "name": "C++",
+    "category": "programming",
+    "proficiency": "intermediate",
+    "level": 65,
+    "icon": "fas fa-code",
+    "is_featured": false,
+    "order": 4
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 25,
+  "fields": {
+    "name": "Node.js",
+    "category": "frameworks",
+    "proficiency": "intermediate",
+    "level": 70,
+    "icon": "fab fa-node-js",
+    "is_featured": true,
+    "order": 4
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 26,
+  "fields": {
+    "name": "Linux",
+    "category": "tools",
+    "proficiency": "advanced",
+    "level": 80,
+    "icon": "fab fa-linux",
+    "is_featured": true,
+    "order": 3
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 27,
+  "fields": {
+    "name": "Jupyter",
+    "category": "tools",
+    "proficiency": "advanced",
+    "level": 85,
+    "icon": "fab fa-python",
+    "is_featured": true,
+    "order": 5
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 28,
+  "fields": {
+    "name": "TensorFlow",
+    "category": "other",
+    "proficiency": "intermediate",
+    "level": 70,
+    "icon": "fas fa-brain",
+    "is_featured": true,
+    "order": 1
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 29,
+  "fields": {
+    "name": "Scikit-learn",
+    "category": "other",
+    "proficiency": "advanced",
+    "level": 80,
+    "icon": "fas fa-chart-line",
+    "is_featured": true,
+    "order": 2
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 30,
+  "fields": {
+    "name": "Pandas",
+    "category": "other",
+    "proficiency": "expert",
+    "level": 90,
+    "icon": "fas fa-table",
+    "is_featured": true,
+    "order": 3
+  }
+},
+{
+  "model": "home.skill",
+  "pk": 31,
+  "fields": {
+    "name": "NumPy",
+    "category": "other",
+    "proficiency": "advanced",
+    "level": 85,
+    "icon": "fas fa-calculator",
+    "is_featured": true,
+    "order": 4
+  }
+},
+{
+  "model": "home.project",
+  "pk": 18,
+  "fields": {
+    "title": "Anti Thef System Web",
+    "slug": "anti-thef-system-web-",
+    "description": "A software project",
+    "detailed_description": "A Various project created in September 2025 and last updated in September 2025.\n\nRepository Statistics:\n• ⭐ 0 stars\n• 🍴 0 forks\n• 📅 Created: September 2025\n• 🔄 Last updated: September 2025\n\nTechnologies: Various\n\nA software development project showcasing various programming concepts and best practices.\n\nVisit the GitHub repository for more details, documentation, and source code.",
+    "image": "",
+    "project_type": "other",
+    "status": "completed",
+    "github_url": "https://github.com/bikalpokharel/anti-thef-system-web-",
+    "demo_url": "",
+    "is_featured": true,
+    "order": 0,
+    "created_at": "2025-09-23T15:05:31.434Z",
+    "updated_at": "2025-09-23T15:05:31.434Z",
+    "technologies": []
+  }
+},
+{
+  "model": "home.project",
+  "pk": 19,
+  "fields": {
+    "title": "Ml Pipeline",
+    "slug": "ml-pipeline",
+    "description": "A Jupyter Notebook project",
+    "detailed_description": "A Jupyter Notebook project created in September 2025 and last updated in September 2025.\n\nRepository Statistics:\n• ⭐ 0 stars\n• 🍴 0 forks\n• 📅 Created: September 2025\n• 🔄 Last updated: September 2025\n\nTechnologies: Jupyter Notebook\n\nA software development project showcasing various programming concepts and best practices.\n\nVisit the GitHub repository for more details, documentation, and source code.",
+    "image": "",
+    "project_type": "other",
+    "status": "completed",
+    "github_url": "https://github.com/bikalpokharel/ML_Pipeline",
+    "demo_url": "",
+    "is_featured": true,
+    "order": 0,
+    "created_at": "2025-09-23T15:05:31.437Z",
+    "updated_at": "2025-09-23T15:05:31.437Z",
+    "technologies": []
+  }
+},
+{
+  "model": "home.project",
+  "pk": 20,
+  "fields": {
+    "title": "Resume",
+    "slug": "resume",
+    "description": "A software project",
+    "detailed_description": "A Various project created in September 2025 and last updated in September 2025.\n\nRepository Statistics:\n• ⭐ 0 stars\n• 🍴 0 forks\n• 📅 Created: September 2025\n• 🔄 Last updated: September 2025\n\nTechnologies: Various\n\nA software development project showcasing various programming concepts and best practices.\n\nVisit the GitHub repository for more details, documentation, and source code.",
+    "image": "",
+    "project_type": "other",
+    "status": "completed",
+    "github_url": "https://github.com/bikalpokharel/Resume",
+    "demo_url": "",
+    "is_featured": true,
+    "order": 0,
+    "created_at": "2025-09-23T15:05:31.439Z",
+    "updated_at": "2025-09-23T15:05:31.439Z",
+    "technologies": []
+  }
+},
+{
+  "model": "home.project",
+  "pk": 21,
+  "fields": {
+    "title": "Sandeep",
+    "slug": "sandeep",
+    "description": "A software project",
+    "detailed_description": "A Various project created in September 2025 and last updated in September 2025.\n\nRepository Statistics:\n• ⭐ 0 stars\n• 🍴 0 forks\n• 📅 Created: September 2025\n• 🔄 Last updated: September 2025\n\nTechnologies: Various\n\nA software development project showcasing various programming concepts and best practices.\n\nVisit the GitHub repository for more details, documentation, and source code.",
+    "image": "",
+    "project_type": "other",
+    "status": "completed",
+    "github_url": "https://github.com/bikalpokharel/sandeep",
+    "demo_url": "",
+    "is_featured": true,
+    "order": 0,
+    "created_at": "2025-09-23T15:05:31.441Z",
+    "updated_at": "2025-09-23T15:05:31.441Z",
+    "technologies": []
+  }
+},
+{
+  "model": "home.project",
+  "pk": 22,
+  "fields": {
+    "title": "School Website",
+    "slug": "school-website-",
+    "description": "A PHP project",
+    "detailed_description": "A PHP project created in September 2025 and last updated in September 2025.\n\nRepository Statistics:\n• ⭐ 0 stars\n• 🍴 0 forks\n• 📅 Created: September 2025\n• 🔄 Last updated: September 2025\n\nTechnologies: PHP\n\nA software development project showcasing various programming concepts and best practices.\n\nVisit the GitHub repository for more details, documentation, and source code.",
+    "image": "",
+    "project_type": "other",
+    "status": "completed",
+    "github_url": "https://github.com/bikalpokharel/School-website-",
+    "demo_url": "",
+    "is_featured": true,
+    "order": 0,
+    "created_at": "2025-09-23T15:05:31.443Z",
+    "updated_at": "2025-09-23T15:05:31.443Z",
+    "technologies": []
+  }
+},
+{
+  "model": "home.project",
+  "pk": 23,
+  "fields": {
+    "title": "Travel Assistant Pro V1",
+    "slug": "travel-assistant-pro-v1",
+    "description": "A Python project",
+    "detailed_description": "A Python project created in September 2025 and last updated in September 2025.\n\nRepository Statistics:\n• ⭐ 0 stars\n• 🍴 0 forks\n• 📅 Created: September 2025\n• 🔄 Last updated: September 2025\n\nTechnologies: Python\n\nA software development project showcasing various programming concepts and best practices.\n\nVisit the GitHub repository for more details, documentation, and source code.",
+    "image": "",
+    "project_type": "other",
+    "status": "completed",
+    "github_url": "https://github.com/bikalpokharel/travel-assistant-pro-v1",
+    "demo_url": "",
+    "is_featured": true,
+    "order": 0,
+    "created_at": "2025-09-23T15:05:31.445Z",
+    "updated_at": "2025-09-23T15:05:31.445Z",
+    "technologies": []
+  }
+},
+{
+  "model": "home.experience",
+  "pk": 1,
+  "fields": {
+    "title": "Computer Science Student",
+    "company": "University/College Name",
+    "location": "Nepal",
+    "experience_type": "education",
+    "start_date": "2022-01-01",
+    "end_date": null,
+    "is_current": true,
+    "description": "Currently pursuing BSc in Computer Science with focus on software development, machine learning, and data structures.",
+    "order": 0,
+    "skills_gained": []
+  }
+},
+{
+  "model": "home.experience",
+  "pk": 2,
+  "fields": {
+    "title": "Freelance Web Developer",
+    "company": "Self-Employed",
+    "location": "Remote",
+    "experience_type": "freelance",
+    "start_date": "2023-06-01",
+    "end_date": null,
+    "is_current": true,
+    "description": "Developing custom web applications for clients using Django, React, and modern web technologies.",
+    "order": 0,
+    "skills_gained": []
+  }
+},
+{
+  "model": "home.experience",
+  "pk": 3,
+  "fields": {
+    "title": "Full-Stack Developer",
+    "company": "Tech Solutions Nepal",
+    "location": "Kathmandu, Nepal",
+    "experience_type": "work",
+    "start_date": "2023-06-01",
+    "end_date": null,
+    "is_current": true,
+    "description": "Working as a full-stack developer on various web applications and mobile projects. \n                \nResponsibilities include:\n• Developing responsive web applications using Django and React\n• Building RESTful APIs and integrating third-party services\n• Database design and optimization\n• Code review and mentoring junior developers\n• Client communication and project management\n• Implementing CI/CD pipelines",
+    "order": 1,
+    "skills_gained": []
+  }
+},
+{
+  "model": "home.experience",
+  "pk": 4,
+  "fields": {
+    "title": "Data Science Intern",
+    "company": "AI Research Lab",
+    "location": "Kathmandu, Nepal",
+    "experience_type": "internship",
+    "start_date": "2023-01-01",
+    "end_date": "2023-05-31",
+    "is_current": false,
+    "description": "Internship focused on machine learning and data analysis projects.\n\nKey achievements:\n• Developed predictive models for business analytics\n• Worked with large datasets using Python and SQL\n• Created data visualizations and reports\n• Collaborated with research team on AI projects\n• Gained experience with TensorFlow and Scikit-learn",
+    "order": 2,
+    "skills_gained": []
+  }
+},
+{
+  "model": "home.experience",
+  "pk": 5,
+  "fields": {
+    "title": "BSc Computer Science",
+    "company": "Tribhuvan University",
+    "location": "Kathmandu, Nepal",
+    "experience_type": "education",
+    "start_date": "2021-09-01",
+    "end_date": "2025-06-30",
+    "is_current": true,
+    "description": "Pursuing Bachelor of Science in Computer Science with focus on software engineering and data science.\n\nRelevant coursework:\n• Data Structures and Algorithms\n• Database Management Systems\n• Software Engineering\n• Machine Learning\n• Web Development\n• Computer Networks\n• Operating Systems",
+    "order": 4,
+    "skills_gained": []
+  }
+},
+{
+  "model": "home.testimonial",
+  "pk": 1,
+  "fields": {
+    "name": "Sarah Johnson",
+    "position": "Project Manager",
+    "company": "TechCorp Solutions",
+    "content": "Bikal delivered an exceptional e-commerce platform for our business. His attention to detail, \n                technical expertise, and ability to understand our requirements made the project a huge success. \n                The website is fast, user-friendly, and has significantly improved our online sales.",
+    "image": "",
+    "rating": 5,
+    "is_active": true,
+    "order": 1,
+    "created_at": "2025-09-23T14:14:41.841Z"
+  }
+},
+{
+  "model": "home.testimonial",
+  "pk": 2,
+  "fields": {
+    "name": "Dr. Rajesh Kumar",
+    "position": "Research Director",
+    "company": "AI Research Lab",
+    "content": "Working with Bikal during his internship was a pleasure. He showed great initiative in \n                learning new technologies and contributed significantly to our machine learning projects. \n                His analytical thinking and problem-solving skills are impressive.",
+    "image": "",
+    "rating": 5,
+    "is_active": true,
+    "order": 2,
+    "created_at": "2025-09-23T14:14:41.842Z"
+  }
+},
+{
+  "model": "home.testimonial",
+  "pk": 3,
+  "fields": {
+    "name": "Michael Chen",
+    "position": "Startup Founder",
+    "company": "InnovateTech",
+    "content": "Bikal helped us build our MVP from scratch. His full-stack development skills and \n                understanding of modern web technologies were crucial to our success. He's reliable, \n                professional, and always delivers quality work on time.",
+    "image": "",
+    "rating": 5,
+    "is_active": true,
+    "order": 3,
+    "created_at": "2025-09-23T14:14:41.842Z"
+  }
+},
+{
+  "model": "home.testimonial",
+  "pk": 4,
+  "fields": {
+    "name": "Priya Sharma",
+    "position": "Marketing Director",
+    "company": "Digital Marketing Agency",
+    "content": "The analytics dashboard Bikal created for us has revolutionized how we track our \n                marketing campaigns. The insights we get are invaluable, and the interface is intuitive. \n                Highly recommend his services!",
+    "image": "",
+    "rating": 5,
+    "is_active": true,
+    "order": 4,
+    "created_at": "2025-09-23T14:14:41.843Z"
+  }
+}
+]
