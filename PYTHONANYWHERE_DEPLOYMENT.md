@@ -11,8 +11,8 @@
 ```bash
 # In PythonAnywhere console
 cd ~
-git clone https://github.com/your-github-username/myportfolio.git
-cd myportfolio
+git clone https://github.com/bikalpokharel/PORTFOLIO.git
+cd PORTFOLIO
 ```
 
 ### Option B: Upload ZIP
@@ -23,7 +23,7 @@ cd myportfolio
 ## Step 3: Set Up Virtual Environment
 ```bash
 # In PythonAnywhere console
-cd ~/myportfolio
+cd ~/PORTFOLIO
 python3.11 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
@@ -34,30 +34,30 @@ pip install -r requirements.txt
 2. Click "Add a new web app"
 3. Choose "Manual configuration" → Python 3.11
 4. Set these paths:
-   - **Source code**: `/home/yourusername/myportfolio`
-   - **Working directory**: `/home/yourusername/myportfolio`
+   - **Source code**: `/home/Bikal/PORTFOLIO`
+   - **Working directory**: `/home/Bikal/PORTFOLIO`
 
 ## Step 5: Configure WSGI File
 1. Click on "WSGI configuration file" link
 2. Replace the content with the content from `pythonanywhere_wsgi.py`
-3. Update `yourusername` with your actual PythonAnywhere username
+3. Copy the content from `pythonanywhere_wsgi.py` (already updated with your username)
 
 ## Step 6: Set Up Static Files
 1. In PythonAnywhere console:
 ```bash
-cd ~/myportfolio
+cd ~/PORTFOLIO
 source venv/bin/activate
 python manage.py collectstatic --noinput
 ```
 
 2. In Web tab, add static files mapping:
    - **URL**: `/static/`
-   - **Directory**: `/home/yourusername/myportfolio/staticfiles/`
+   - **Directory**: `/home/Bikal/PORTFOLIO/staticfiles/`
 
 ## Step 7: Set Up Media Files
 In Web tab, add media files mapping:
 - **URL**: `/media/`
-- **Directory**: `/home/yourusername/myportfolio/media/`
+- **Directory**: `/home/Bikal/PORTFOLIO/media/`
 
 ## Step 8: Configure Environment Variables
 1. Go to Web tab → Environment variables section
@@ -67,7 +67,7 @@ In Web tab, add media files mapping:
 
 ## Step 9: Run Database Migrations
 ```bash
-cd ~/myportfolio
+cd ~/PORTFOLIO
 source venv/bin/activate
 python manage.py migrate
 python manage.py createsuperuser
@@ -78,13 +78,13 @@ python manage.py sync_github_projects
 ## Step 10: Reload Web App
 1. Go to Web tab
 2. Click **"Reload"** button
-3. Visit your site: `https://yourusername.pythonanywhere.com`
+3. Visit your site: `https://Bikal.pythonanywhere.com`
 
 ## 🎉 Your Portfolio is Live!
 
 ### Important Notes:
-- Your site URL: `https://yourusername.pythonanywhere.com`
-- Admin panel: `https://yourusername.pythonanywhere.com/admin/`
+- Your site URL: `https://Bikal.pythonanywhere.com`
+- Admin panel: `https://Bikal.pythonanywhere.com/admin/`
 - Free accounts have 3 months of uptime
 - SSL certificate is included for free
 
@@ -96,7 +96,7 @@ python manage.py sync_github_projects
 ### Updates:
 To update your site:
 ```bash
-cd ~/myportfolio
+cd ~/PORTFOLIO
 git pull origin main
 source venv/bin/activate
 python manage.py collectstatic --noinput

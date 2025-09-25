@@ -11,7 +11,7 @@ import os
 import sys
 
 # Add your project directory to the Python path
-project_home = '/home/yourusername/myportfolio'  # Update with your actual username
+project_home = '/home/Bikal/PORTFOLIO'  # Updated with actual username
 if project_home not in sys.path:
     sys.path.append(project_home)
 
