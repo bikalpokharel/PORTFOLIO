@@ -30,14 +30,7 @@
             </div>
             <div class="col-lg-6" data-aos="fade-left">
                 <div class="profile-image-container">
-                    {% if config.profile_image %}
-                    <img src="{{ config.profile_image.url }}" alt="{{ config.site_name }}" 
-                         class="profile-image">
-                    {% else %}
-                    <div class="profile-placeholder">
-                        <i class="fas fa-user fa-4x"></i>
-                    </div>
-                    {% endif %}
+                    <img src="{% static 'img/img1.png' %}" alt="Bikal Sharma Pokharel" class="profile-image">
                     <div class="profile-badge">
                         <i class="fas fa-code"></i>
                         Developer

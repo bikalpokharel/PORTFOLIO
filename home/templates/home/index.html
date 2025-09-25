@@ -41,14 +41,8 @@
                 </div>
             </div>
             <div class="col-lg-5 text-center" data-aos="fade-left" data-aos-delay="200">
-                {% if config.profile_image %}
-                <img src="{{ config.profile_image.url }}" alt="{{ config.site_name }}" 
+                <img src="{% static 'img/img1.png' %}" alt="{{ config.site_name }}" 
                      class="img-fluid rounded-circle" style="width: 350px; height: 350px; object-fit: cover; border: 5px solid rgba(255,255,255,0.1); box-shadow: var(--shadow-lg);">
-                {% else %}
-                <div class="d-inline-block p-5 rounded-circle bg-primary text-white" style="width: 350px; height: 350px; display: flex; align-items: center; justify-content: center;">
-                    <i class="fas fa-user fa-8x"></i>
-                </div>
-                {% endif %}
             </div>
         </div>
     </div>

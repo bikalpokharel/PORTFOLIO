@@ -16,7 +16,9 @@
                 {% if project.demo_url %}
                 <a href="{{ project.demo_url }}" target="_blank" class="btn btn-light btn-lg me-2"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                 {% endif %}
-                <a href="https://github.com/bikalpokharel" target="_blank" class="btn btn-outline-light btn-lg"><i class="fab fa-github"></i> Source Code</a>
+                {% if project.github_url %}
+                <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline-light btn-lg"><i class="fab fa-github"></i> Source Code</a>
+                {% endif %}
             </div>
             <div class="col-lg-4 text-center" data-aos="fade-left">
                 {% if project.image %}
@@ -27,24 +29,90 @@
     </div>
     </section>
 
-<section class="section" style="padding-bottom: 140px;">
+<section class="section project-detail-section" style="padding-bottom: 80px;">
     <div class="container">
         <div class="row">
             <div class="col-lg-8" data-aos="fade-up">
-                <div class="card-custom p-4 mb-4">
+                <div class="card-custom p-4 mb-4 project-detail-card">
                     <h3 class="mb-3">Overview</h3>
                     <p class="text-secondary" style="font-size: 1.05rem; line-height: 1.9;">{{ project.description }}</p>
+                    
+                    <!-- Project Statistics -->
+                    <div class="row mt-4 mb-4">
+                        <div class="col-md-6">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-calendar-alt text-primary"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h6 class="stat-label">Project Type</h6>
+                                    <p class="stat-value">{{ project.get_project_type_display }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-check-circle text-success"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h6 class="stat-label">Status</h6>
+                                    <p class="stat-value">{{ project.get_status_display }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Timeline -->
+                    <div class="timeline-section mb-4">
+                        <h5 class="mb-3"><i class="fas fa-history text-primary me-2"></i>Project Timeline</h5>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h6>Created</h6>
+                                <p class="text-muted">{{ project.created_at|date:"F Y" }}</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <h6>Last Updated</h6>
+                                <p class="text-muted">{{ project.updated_at|date:"F Y" }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Key Features -->
+                    <div class="features-section mb-4">
+                        <h5 class="mb-3"><i class="fas fa-star text-primary me-2"></i>Key Features</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check text-success me-2"></i>Modern Python Development</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Best Practices Implementation</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Clean Code Architecture</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="feature-list">
+                                    <li><i class="fas fa-check text-success me-2"></i>Comprehensive Documentation</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Version Control Integration</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Open Source Available</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                {% if project.content %}
-                <div class="card-custom p-4 mb-4">
+                {% if project.detailed_description %}
+                <div class="card-custom p-4 mb-4 project-detail-card">
                     <h3 class="mb-3">Details</h3>
-                    <div class="text-secondary">{{ project.content|safe }}</div>
+                    <div class="text-secondary">{{ project.detailed_description|safe }}</div>
                 </div>
                 {% endif %}
             </div>
             <div class="col-lg-4" data-aos="fade-up" data-aos-delay="150">
-                <div class="card-custom p-4 mb-4">
+                <div class="card-custom p-4 mb-4 project-detail-card">
                     <h5 class="mb-3">Technologies</h5>
                     {% if project.technologies.all %}
                         {% for tech in project.technologies.all %}
@@ -55,7 +123,7 @@
                     {% endif %}
                 </div>
 
-                <div class="card-custom p-4 mb-4">
+                <div class="card-custom p-4 mb-4 project-detail-card">
                     <h5 class="mb-3">Contact</h5>
                     <a href="https://wa.me/9779864546508" target="_blank" class="btn btn-success w-100 mb-2"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                     <a href="https://www.linkedin.com/in/bikal-pokharel-1b69442a1/" target="_blank" class="btn btn-outline-primary w-100"><i class="fab fa-linkedin"></i> Connect on LinkedIn</a>
@@ -63,29 +131,64 @@
             </div>
         </div>
 
-        {% if related_projects %}
-        <div class="mt-5" data-aos="fade-up">
-            <h3 class="mb-4">Related Projects</h3>
-            <div class="row">
-                {% for p in related_projects %}
-                <div class="col-md-4 mb-4">
-                    <div class="card-custom h-100">
-                        {% if p.image %}
-                        <img src="{{ p.image.url }}" class="card-img-top" alt="{{ p.title }}" style="height: 180px; object-fit: cover;">
-                        {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{ p.title }}</h5>
-                            <p class="text-secondary">{{ p.description|truncatechars:120 }}</p>
-                            <a class="btn btn-outline-primary btn-sm" href="{{ p.get_absolute_url }}"><i class="fas fa-info-circle"></i> Details</a>
+        </div>
+    </div>
+</section>
+
+<!-- Add a large spacer to ensure separation -->
+<div style="height: 200px; background: transparent;"></div>
+
+{% if related_projects %}
+<!-- Related Projects Section - Completely Separate -->
+<div style="background: var(--bg-secondary); padding: 100px 0 0 0; margin-top: 200px; position: relative; z-index: 1;">
+    <div class="container" style="padding-bottom: 0;">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Related Projects</h2>
+            <p class="lead text-secondary">Explore more of my work</p>
+        </div>
+        <div class="row g-4">
+            {% for p in related_projects %}
+            <div class="col-lg-4 col-md-6">
+                <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 20px; overflow: hidden; transition: all 0.3s ease; height: auto; position: relative; box-shadow: var(--shadow); margin-bottom: 0;">
+                    {% if p.image %}
+                    <div style="position: relative; height: 200px; overflow: hidden;">
+                        <img src="{{ p.image.url }}" alt="{{ p.title }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;">
+                    </div>
+                    {% else %}
+                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, var(--primary-color), var(--accent-glow)); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white;">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    {% endif %}
+                    <div style="padding: 1.5rem;">
+                        <div style="margin-bottom: 1rem;">
+                            <span class="badge bg-primary" style="margin-right: 0.5rem; font-size: 0.75rem;">{{ p.get_project_type_display }}</span>
+                            <span class="badge bg-success" style="font-size: 0.75rem;">{{ p.get_status_display }}</span>
+                        </div>
+                        <h5 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--text-primary);">{{ p.title }}</h5>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; margin-bottom: 1rem;">{{ p.description|truncatechars:100 }}</p>
+                        <div style="margin-bottom: 1.5rem;">
+                            {% for tech in p.technologies.all|slice:":3" %}
+                            <span style="display: inline-block; background: var(--bg-accent); color: var(--text-primary); padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.75rem; margin-right: 0.5rem; margin-bottom: 0.5rem; border: 1px solid var(--border-color);">{{ tech.name }}</span>
+                            {% endfor %}
+                        </div>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <a href="{{ p.get_absolute_url }}" class="btn btn-outline-primary btn-sm" style="flex: 1; min-width: 120px;">
+                                <i class="fas fa-info-circle"></i> View Project
+                            </a>
+                            {% if p.github_url %}
+                            <a href="{{ p.github_url }}" target="_blank" class="btn btn-outline-secondary btn-sm" style="flex: 1; min-width: 120px;">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
-                {% endfor %}
             </div>
+            {% endfor %}
         </div>
-        {% endif %}
     </div>
-</section>
+</div>
+{% endif %}
 {% endblock %}
 
 
