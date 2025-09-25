@@ -54,7 +54,7 @@ Located in: home/models.py
 
 SiteConfiguration Model:
 - Singleton pattern for site-wide settings
-- Fields: site_name, tagline, bio, email, location, years_experience
+- Fields: site_name, tagline,  email, location, years_experience
 - Purpose: Centralized configuration management
 
 Skill Model:
